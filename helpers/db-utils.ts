@@ -11,5 +11,7 @@ export const insertDocument = async (client: MongoClient, collection: string, da
 };
 
 export const connectDatabase = async () => {
-  return await MongoClient.connect('mongodb+srv://user:ebXxeffuTrHoqZ4e@cluster0.rujypjj.mongodb.net/my-site?retryWrites=true&w=majority');
+  const connectionString =
+    `mongodb+srv://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@${process.env.MONGODB_CLUSTER_NAME}.rujypjj.mongodb.net/${process.env.MONGODB_DATABASE}?retryWrites=true&w=majority`;
+  return await MongoClient.connect(connectionString);
 };
