@@ -1,11 +1,23 @@
 import PostContent from "../../components/posts/post-detail/post-content";
 import { getPostData, getPostsFiles } from "../../lib/posts-util";
 import { GetStaticPropsContext } from "next";
+import { Fragment } from "react";
+import Head from "next/head";
 
 const PostDetailPage = (props: any) => {
   const { post } = props;
   return (
-    <PostContent post={post}/>
+    <Fragment>
+      <Head>
+        <title>{props.post.title}</title>
+        <meta
+          name={'description'}
+          content={props.post.excerpt}
+        />
+      </Head>
+      <PostContent post={post}/>
+    </Fragment>
+
   );
 };
 
